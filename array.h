@@ -2,45 +2,56 @@
 
 #include <iostream>
 
-template <class T, int size> class array
+template <class T, size_t size> class array
 {
 private:
-    T __array[size];
+    T arr[size];
 public:
     array(){};
-    //array(const array<T, size> &);
-    //array(array<T, size> &&);
 
-
-    T& operator[](int index)
+    array(const array<T, size> & other)
     {
-        return __array[index];
+        for(size_t i=0;i<size;i++)
+            arr[i] = other.arr[i];
+    }
+    
+    array(array<T, size> && other)
+    {
+        for(size_t i=0;i<size;i++)
+            arr[i] = other.arr[i];
+        other.arr = NULL;
     }
 
 
-    T& at(int index)
+    T& operator[](size_t index)
+    {
+        return arr[index];
+    }
+
+
+    T& at(size_t index)
     {
         if(index < 0 || index >= size)
             throw "Index out of bounds!";
-        return __array[index];
+        return arr[index];
     }
 
 
     T* data()
     {
-        return __array;
+        return arr;
     }
 
 
     T& front()
     {
-        return __array[0];
+        return arr[0];
     }
 
 
     T& back()
     {
-        return __array[size-1];
+        return arr[size-1];
     }
 };
 

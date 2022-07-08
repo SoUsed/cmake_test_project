@@ -33,6 +33,13 @@ int main()
     ar.back() = 0;
 
     std::cout << ar.back() << "\n";
+
+    array<int, 6> ar2(ar);
+    for(int i=0;i<6;i++)
+    {
+        std::cout << ar2[i] << " ";
+    }
+    std::cout << "\n";
     
     return 0;
 }
