@@ -25,6 +25,14 @@ int main()
     {
         std::cerr << errmsg << "\n";
     }
+
+    std::cout << ar.front() << "\n";
+
+    std::cout << ar.back() << "\n";
+
+    ar.back() = 0;
+
+    std::cout << ar.back() << "\n";
     
     return 0;
 }

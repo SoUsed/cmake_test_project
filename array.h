@@ -34,13 +34,13 @@ public:
 
     T& front()
     {
-        return &__array[0];
+        return __array[0];
     }
 
 
     T& back()
     {
-        return &__array[size-1];
+        return __array[size-1];
     }
 };
 
