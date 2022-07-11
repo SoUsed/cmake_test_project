@@ -14,7 +14,7 @@ protected:
         maxsize *= 2;
         T* newdata = new T[maxsize];
 
-        for(size_t i;i<cur_size;i++)
+        for(size_t i=0;i<cur_size;i++)
         {
             newdata[i] = data[i];
         }
@@ -56,7 +56,7 @@ public:
     {
         maxsize = cur_size = inital_size;
         data = new T[inital_size];
-        
+
         for(size_t i=0;i<inital_size;i++)
             data[i] = fill_value;
     }

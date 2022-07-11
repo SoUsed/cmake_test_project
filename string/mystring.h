@@ -1,5 +1,5 @@
 #include "vector.h"
-
+#include <iostream>
 
 size_t strlen(const char* str)
 {
@@ -17,12 +17,6 @@ public:
         cur_size = 0;
         maxsize = 10;
         data = new char[maxsize];
-    }
-
-
-    ~mystring()
-    {
-        delete [] data;
     }
 
 
@@ -49,8 +43,7 @@ public:
 
     void append(mystring& other)
     {
-        for(int i=0;i<other.size();i++)
-            push_back(other[i]);
+        append(other.c_str());
     }
 
 
@@ -63,7 +56,10 @@ public:
 
     mystring& operator=(mystring& other)
     {
-        delete [] data;
+        if(data)
+            delete [] data;
+
+
         cur_size = other.cur_size;
         maxsize = other.maxsize;
         data = new char[maxsize];
@@ -77,7 +73,10 @@ public:
 
     mystring& operator=(const char* str)
     {
-        delete [] data;
+        if(data)
+            delete [] data;
+
+
         cur_size = maxsize = strlen(str);
         data = new char[maxsize];
         
@@ -101,5 +100,15 @@ public:
         mystring res = *this;
         res.append(str);
         return res;
+    }
+
+
+    const char* c_str()
+    {
+        char* result = new char[cur_size];
+        for(int i=0;i<cur_size;i++)
+            result[i] = data[i];
+        
+        return result;
     }
 };
