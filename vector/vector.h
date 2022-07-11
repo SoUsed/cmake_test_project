@@ -32,6 +32,12 @@ public:
         data = new T[maxsize];
     }
 
+    
+    virtual ~vector()
+    {
+        delete [] data;
+    }
+
 
     vector(vector<T> & other)
     {
@@ -50,6 +56,7 @@ public:
     {
         maxsize = cur_size = inital_size;
         data = new T[inital_size];
+        
         for(size_t i=0;i<inital_size;i++)
             data[i] = fill_value;
     }
