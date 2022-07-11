@@ -20,6 +20,12 @@ TEST(test_string, concat)
 
     EXPECT_EQ(strcmp((str1 + str2).getdata(), "abcdefgh"), 0);
     EXPECT_EQ(strcmp((str1 + "efgh").getdata(), "abcdefgh"), 0);
+
+    str1.append("qwer");
+    str2.append(str1);
+
+    EXPECT_EQ(strcmp(str1.getdata(), "abcdqwer"), 0);
+    EXPECT_EQ(strcmp(str2.getdata(), "efghabcdqwer"), 0);
 }
 
 
