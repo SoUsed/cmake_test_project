@@ -1,5 +1,4 @@
 #include "vector.h"
-#include <iostream>
 
 size_t strlen(const char* str)
 {
