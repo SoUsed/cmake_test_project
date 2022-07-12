@@ -18,6 +18,8 @@ public:
     array(array<T, size> && other)
     {
         arr = other.arr;
+
+        other.arr = NULL;
     }
 
 

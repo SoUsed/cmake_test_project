@@ -45,6 +45,10 @@ public:
         cur_size = other.cur_size;
         maxsize = other.maxsize;
         data = other.data;
+
+        other.data = NULL;
+        other.maxsize = 0;
+        other.cur_size = 0;
     }
 
 
