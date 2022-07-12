@@ -15,9 +15,9 @@ TEST(test_array, copy_constructor)
 
     array<char*, 3> ar3;
 
-    ar3[0] = "first";
-    ar3[1] = "second";
-    ar3[2] = "third";
+    ar3[0] = (char*)"first";
+    ar3[1] = (char*)"second";
+    ar3[2] = (char*)"third";
 
     array<char*, 3> ar4(ar3);
 

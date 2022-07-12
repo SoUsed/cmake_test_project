@@ -51,6 +51,15 @@ public:
         }
     }
 
+
+    vector(vector<T> && other)
+    {
+        maxsize = other.maxsize;
+        cur_size = other.cur_size;
+
+        data = other.data;
+    }
+
     
     vector(size_t inital_size, T fill_value)
     {

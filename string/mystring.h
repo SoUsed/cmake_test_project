@@ -40,6 +40,14 @@ public:
     }
 
 
+    mystring(mystring&& other)
+    {
+        cur_size = other.cur_size;
+        maxsize = other.maxsize;
+        data = other.data;
+    }
+
+
     void append(mystring& other)
     {
         append(other.c_str());
