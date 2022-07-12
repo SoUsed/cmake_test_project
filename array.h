@@ -17,8 +17,8 @@ public:
     
     array(array<T, size> && other)
     {
-        for(size_t i=0;i<size;i++)
-            arr[i] = other.arr[i];
+        arr = other.arr;
+
         other.arr = NULL;
     }
 

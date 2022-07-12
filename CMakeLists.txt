@@ -11,3 +11,6 @@ include_directories(googletest/include)
 add_executable(test_array test_array.cpp)
 
 target_link_libraries(test_array PRIVATE gtest)
+
+add_subdirectory(vector)
+add_subdirectory(string)
