@@ -114,12 +114,26 @@ public:
     }
 
 
+    void push_back(char elem)
+    {
+        if(cur_size >= maxsize - 1)
+            resize();
+        
+        data[cur_size++] = elem;
+        data[cur_size] = '\0';
+    }
+
+
+    void pop_back()
+    {
+        if(cur_size==0) throw "Vector is empty!";
+        cur_size--;
+        data[cur_size] = '\0';
+    }
+
+
     const char* c_str()
     {
-        char* result = new char[cur_size];
-        for(int i=0;i<cur_size;i++)
-            result[i] = data[i];
-        
-        return result;
+        return data;
     }
 };
