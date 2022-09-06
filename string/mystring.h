@@ -1,139 +1,33 @@
 #include "vector.h"
 
-size_t strlen(const char* str)
-{
-    size_t len = 0;
-    for(;str[len]!='\0';len++) {}
-    return len;
-}
-
-
-class mystring : public vector<char>
-{
+class mystring : public vector<char> {
 public:
-    mystring()
-    {
-        cur_size = 0;
-        maxsize = 10;
-        data = new char[maxsize];
+  static size_t strlen(const char *str) {
+    size_t len = 0;
+    for (; str[len] != '\0'; len++) {
     }
+    return len;
+  }
 
+  mystring();
+  mystring(const char *str);
+  mystring(mystring &other);
+  mystring(mystring &&other);
 
-    mystring(const char* str)
-    {
-        cur_size = maxsize = strlen(str);
-        data = new char[maxsize];
-        
-        for(int i=0;i<maxsize;i++)
-            data[i] = str[i];
-    }
+  void append(mystring &other);
+  void append(const char *str);
 
+  mystring &operator=(mystring &other);
 
-    mystring(mystring& other)
-    {
-        cur_size = other.cur_size;
-        maxsize = other.maxsize;
-        data = new char[maxsize];
+  mystring &operator=(const char *str);
 
-        for(int i=0;i<cur_size;i++)
-            data[i] = other.at(i);
-    }
+  mystring operator+(mystring &other);
 
+  mystring operator+(const char *str);
 
-    mystring(mystring&& other)
-    {
-        cur_size = other.cur_size;
-        maxsize = other.maxsize;
-        data = other.data;
+  void push_back(char elem);
 
-        other.data = NULL;
-        other.maxsize = 0;
-        other.cur_size = 0;
-    }
+  void pop_back();
 
-
-    void append(mystring& other)
-    {
-        append(other.c_str());
-    }
-
-
-    void append(const char* str)
-    {
-        for(int i=0;i<strlen(str);i++)
-            push_back(str[i]);
-    }
-
-
-    mystring& operator=(mystring& other)
-    {
-        if(data)
-            delete [] data;
-
-
-        cur_size = other.cur_size;
-        maxsize = other.maxsize;
-        data = new char[maxsize];
-
-        for(int i=0;i<cur_size;i++)
-            data[i] = other[i];
-
-        return *this;
-    }
-
-
-    mystring& operator=(const char* str)
-    {
-        if(data)
-            delete [] data;
-
-
-        cur_size = maxsize = strlen(str);
-        data = new char[maxsize];
-        
-        for(int i=0;i<maxsize;i++)
-            data[i] = str[i];
-
-        return *this;
-    }
-
-
-    mystring operator+(mystring& other)
-    {
-        mystring res = *this;
-        res.append(other);
-        return res;
-    }
-
-
-    mystring operator+(const char* str)
-    {
-        mystring res = *this;
-        res.append(str);
-        return res;
-    }
-
-
-    void push_back(char elem)
-    {
-        if(cur_size >= maxsize - 1)
-            resize();
-        
-        data[cur_size++] = elem;
-        data[cur_size] = '\0';
-    }
-
-
-    void pop_back()
-    {
-        if(cur_size==0) throw "Vector is empty!";
-        cur_size--;
-        data[cur_size] = '\0';
-    }
-
-
-    const char* c_str()
-    {
-        return data;
-    }
+  const char *c_str();
 };
